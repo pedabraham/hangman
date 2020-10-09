@@ -2,6 +2,47 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+function Letter(props){
+
+}
+
+function Word(props){
+  /*props
+    letter
+    components-
+      letter
+  */
+}
+
+function Bullet(){
+
+}
+
+function Strikes(props){
+  /*
+    Components
+      Bullet
+  */
+}
+
+function Textbox(props){
+
+}
+
+class Game extends React.Component{
+  /*
+    components
+      textbox
+      strikes
+      word
+  */
+  constructor(props) {
+    super(props);
+
+  }
+}
+
+
 function App() {
   return (
     <div className="App">
