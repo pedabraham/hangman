@@ -43,14 +43,20 @@
   color: white;
   margin: auto;
   display: block;
+  height: 115px;
+  width: 115px;
+  border-radius: 10px;
+  background-color: black;
 }
 
 .square{
-  width: 120px;
-  height: 120px;
-  /*background-color: white;*/
-  display: grid;
+  width: 150px;
+  height: 150px;
+  background-color: inherit;
+  display: inline-grid;
+  grid-auto-rows: 115px 35px;
   margin: 10px;
+  vertical-align: bottom;
 }
 
 .line{
@@ -59,6 +65,10 @@ width: 120px;
 height: 9px;
 /* border-style: solid; */
 /* border-color: black; */
-background-color: #61dafb;;
+background-color: #61dafb;
 margin: auto;
+}
+
+.Word{
+  background-color: inherit;
 }
