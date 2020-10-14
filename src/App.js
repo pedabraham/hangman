@@ -9,23 +9,33 @@ function Letter(props){
       letter
   */
   return(
-    <div className="square">
+    <span className="square">
       <div className="char">
         {props.char}
       </div>
       <div className="line">
       </div>
-    </div>
-
+      </span>
   )
 }
 
 function Word(props){
   /*props
-    word, string
+    word, arry of characters
     components-
       letter
   */
+  const palabra = props.word
+  const htmlWord = palabra.map((char,i)=>{
+    return(
+      <Letter char={char} />
+    )
+  })
+  return(
+    <div className="Word">
+      {htmlWord}
+    </div>
+  )
 }
 
 function Bullet(){
@@ -73,7 +83,9 @@ function App() {
         >
           Learn React
         </a>
+        <Word word={["m"," ","n","",'s','i','ó','n']}/>
       </header>
+
     </div>
   );
 }
