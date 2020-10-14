@@ -3,12 +3,26 @@ import logo from './logo.svg';
 import './App.css';
 
 function Letter(props){
+  /*props
+    character, char
+    components-
+      letter
+  */
+  return(
+    <div className="square">
+      <div className="char">
+        {props.char}
+      </div>
+      <div className="line">
+      </div>
+    </div>
 
+  )
 }
 
 function Word(props){
   /*props
-    letter
+    word, string
     components-
       letter
   */

@@ -36,3 +36,29 @@
     transform: rotate(360deg);
   }
 }
+
+.char {
+  font-family: serif;
+  font-size:100px;
+  color: white;
+  margin: auto;
+  display: block;
+}
+
+.square{
+  width: 120px;
+  height: 120px;
+  /*background-color: white;*/
+  display: grid;
+  margin: 10px;
+}
+
+.line{
+  /* border-width: 1px; */
+width: 120px;
+height: 9px;
+/* border-style: solid; */
+/* border-color: black; */
+background-color: #61dafb;;
+margin: auto;
+}
