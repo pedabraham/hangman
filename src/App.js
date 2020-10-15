@@ -49,8 +49,53 @@ function Strikes(props){
   */
 }
 
-function Textbox(props){
+class Textbox extends React.Component{
+  /*
+  props
+  verify letter funtion.
+  */
+  constructor(props){
+    super(props);
+    this.state = {
+      submitedText:'',
+      text:''
+    };
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
 
+  handleChange(event){
+    const char = event.target.value;
+    if(char.length>1){
+      this.setState({text: char[1]});
+    }else{
+      this.setState({text: char});
+    }
+
+  }
+
+  handleSubmit(event){
+    event.preventDefault();
+    const text = this.state.text;
+    this.setState({submitedText:text, text:''})
+  }
+
+  render(){
+    return(
+    <div>
+      <form onSubmit={this.handleSubmit}>
+        <input
+          className="char textbox"
+          id="new-char"
+          onChange={this.handleChange}
+          value={this.state.text}
+        />
+        <button>
+          Verify
+        </button>
+      </form>
+    </div>)
+  }
 }
 
 class Game extends React.Component{
@@ -84,6 +129,7 @@ function App() {
           Learn React
         </a>
         <Word word={["m"," ","n","",'s','i','ó','n']}/>
+        <Textbox d={2}/>
       </header>
 
     </div>

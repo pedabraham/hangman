@@ -46,7 +46,7 @@
   height: 115px;
   width: 115px;
   border-radius: 10px;
-  background-color: black;
+  background-color: inherit;
 }
 
 .square{
@@ -71,4 +71,17 @@ margin: auto;
 
 .Word{
   background-color: inherit;
+}
+
+.textbox{
+  border-style: none;
+  text-align: center;
+  background-color: black;
+}
+
+.textbox:focus{
+  /*outline-color: #61dafb;
+  outline-style: solid;*/
+  outline: none;
+  box-shadow: 0 0 0 2pt #61dafb;
 }
