@@ -85,3 +85,20 @@ margin: auto;
   outline: none;
   box-shadow: 0 0 0 2pt #61dafb;
 }
+
+.Bullet{
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+  background-color: #61dafb;
+  display: inline-block;
+  vertical-align: bottom;
+  margin:10px;
+  box-sizing: border-box;
+}
+
+.empty{
+  border-style: solid;
+  border-color: #61dafb;
+  background-color: inherit;
+}
