@@ -38,8 +38,28 @@ function Word(props){
   )
 }
 
-function Bullet(){
+function Bullet(props){
+  /*props
+  state- on or off
+  */
+  const valid = props.valid;
+  let htmlBullet;
+  if(valid === true){
+    htmlBullet = (
+      <span className="Bullet">
+      </span>
+    )
+  }
+  else {
+    htmlBullet = (
+      <span className="Bullet empty">
+      </span>
+    )
+  }
 
+  return(
+    htmlBullet
+  )
 }
 
 function Strikes(props){
@@ -128,8 +148,12 @@ function App() {
         >
           Learn React
         </a>
+        <div>
+        <Bullet valid={true}/>
+        <Bullet valid={false}/>
+        </div>
         <Word word={["m"," ","n","",'s','i','ó','n']}/>
-        <Textbox d={2}/>
+        <Textbox />
       </header>
 
     </div>
