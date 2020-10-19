@@ -52,9 +52,21 @@ function Bullet(props){
 
 function Strikes(props){
   /*
-    Components
-      Bullet
+  props
+    record
+  Components
+    Bullet
   */
+  const html_strike = props.record.map((e,i)=>{
+    return(
+      <Bullet valid={e}/>
+    )
+  })
+  return(
+    <div className="Strikes">
+      {html_strike}
+    </div>
+  )
 }
 
 class Textbox extends React.Component{
