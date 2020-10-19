@@ -42,23 +42,11 @@ function Bullet(props){
   /*props
   state- on or off
   */
-  const valid = props.valid;
-  let htmlBullet;
-  if(valid === true){
-    htmlBullet = (
-      <span className="Bullet">
-      </span>
-    )
-  }
-  else {
-    htmlBullet = (
-      <span className="Bullet empty">
-      </span>
-    )
-  }
+  const empty = props.valid ? '' : 'empty';
 
   return(
-    htmlBullet
+    <span className={'Bullet ' + (empty)}>
+    </span>
   )
 }
 
