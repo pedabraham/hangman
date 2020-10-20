@@ -128,6 +128,41 @@ class Game extends React.Component{
   constructor(props) {
     super(props);
 
+    this.state = {
+      strike_record : 0,
+      input_letter :'',
+      word : [],
+      strike_total : 3
+    }
+  }
+
+  //get word to start game
+  init_game(){
+
+  }
+
+  //translates the strikes count and strike total to an strike array
+  strike_array(){
+  }
+
+  //updates the state of letter
+  handle_input(){
+
+  }
+
+  //update the word and the strike board
+  update_game(){
+
+  }
+
+  render(){
+    return (
+      <>
+      <Strikes record={[true,false,false]}/>
+      <Word word={["m"," ","n","",'s','i','ó','n']} />
+      <Textbox />
+      </>
+    )
   }
 }
 
