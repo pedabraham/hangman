@@ -143,6 +143,18 @@ class Game extends React.Component{
 
   //translates the strikes count and strike total to an strike array
   strike_array(){
+    let array  = []
+    // remaining opportinutys in the game
+    const ops = this.state.strike_total - this.state.strike_record
+    for (let i = 0; i < this.state.strike_total; i++) {
+      if (i<ops){
+        array.push(true)
+      }
+      else {
+        array.push(false)
+      }
+    }
+    return array
   }
 
   //updates the state of letter
@@ -158,8 +170,8 @@ class Game extends React.Component{
   render(){
     return (
       <>
-      <Strikes record={[true,false,false]}/>
       <Word word={["m"," ","n","",'s','i','ó','n']} />
+      <Strikes record={this.strike_array()}/>
       <Textbox />
       </>
     )
