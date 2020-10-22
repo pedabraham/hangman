@@ -127,12 +127,12 @@ class Game extends React.Component{
   */
   constructor(props) {
     super(props);
+    this.strike_total = 4
 
     this.state = {
       strike_record : 0,
       input_letter :'',
-      word : [],
-      strike_total : 3
+      word : {},
     }
   }
 
