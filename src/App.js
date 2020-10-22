@@ -161,8 +161,8 @@ class Game extends React.Component{
   strike_array(){
     let array  = []
     // remaining opportinutys in the game
-    const ops = this.state.strike_total - this.state.strike_record
-    for (let i = 0; i < this.state.strike_total; i++) {
+    const ops = this.strike_total - this.state.strike_record
+    for (let i = 0; i < this.strike_total; i++) {
       if (i<ops){
         array.push(true)
       }
