@@ -139,6 +139,22 @@ class Game extends React.Component{
   //get word to start game
   init_game(){
 
+  //
+  word_positions(word){
+    //iterate over string
+    let position = {}
+    let array = []
+    for (var i = 0; i < word.length; i++) {
+      if (position[word[i]] === undefined) {
+        position[word[i]] = [];
+      }
+      position[word[i]].push(i);
+      array.push('');
+    }
+    return ({
+      position: position,
+      array: array
+    })
   }
 
   //translates the strikes count and strike total to an strike array
