@@ -97,6 +97,7 @@ class Textbox extends React.Component{
   handleSubmit(event){
     event.preventDefault();
     const text = this.state.text;
+    this.props.check_letter(text)
     this.setState({submitedText:text, text:''})
   }
 
@@ -134,6 +135,7 @@ class Game extends React.Component{
       input_letter :'',
       word : {},
     }
+    this.handle_input = this.handle_input.bind(this)
   }
 
   //get word to start game
@@ -174,8 +176,19 @@ class Game extends React.Component{
   }
 
   //updates the state of letter
-  handle_input(){
-
+  handle_input(text){
+    const word = this.state.word.position
+    let arrayW = this.state.word.array
+    const strike_record = this.state.strike_record + 1
+    if (word.hasOwnProperty(text)) {
+      for (var i = 0; i < word[text].length; i++) {
+        arrayW[word[text][i]]=text
+      }
+      this.setState({word: {position:word,array:arrayW}})
+    }
+    else{
+      this.setState({strike_record:strike_record})
+    }
   }
 
   //update the word and the strike board
@@ -189,6 +202,7 @@ class Game extends React.Component{
       <Word word={["m"," ","n","",'s','i','ó','n']} />
       <Strikes record={this.strike_array()}/>
       <Textbox />
+      <Textbox check_letter={this.handle_input}/>
       </>
     )
   }
