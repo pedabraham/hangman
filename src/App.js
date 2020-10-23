@@ -129,17 +129,22 @@ class Game extends React.Component{
   constructor(props) {
     super(props);
     this.strike_total = 4
-
+    const initWord = this.init_game()
     this.state = {
       strike_record : 0,
-      input_letter :'',
-      word : {},
+      word : initWord,
     }
     this.handle_input = this.handle_input.bind(this)
   }
 
   //get word to start game
   init_game(){
+    //inizilizar palabra ubicar pocisiones de la letra en la palabra y
+    const word = 'palabra'
+    const word_object = this.word_positions(word)
+    return word_object;
+    //inizialiar array de la palbra, con una corecta longitud de espacios vacios
+  }
 
   //
   word_positions(word){
