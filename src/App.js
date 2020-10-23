@@ -204,9 +204,8 @@ class Game extends React.Component{
   render(){
     return (
       <>
-      <Word word={["m"," ","n","",'s','i','ó','n']} />
       <Strikes record={this.strike_array()}/>
-      <Textbox />
+      <Word word={this.state.word.array} />
       <Textbox check_letter={this.handle_input}/>
       </>
     )
