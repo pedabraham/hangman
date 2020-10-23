@@ -229,12 +229,7 @@ function App() {
         >
           Learn React
         </a>
-        <div>
-        <Bullet valid={true}/>
-        <Bullet valid={false}/>
-        </div>
-        <Word word={["m"," ","n","",'s','i','ó','n']}/>
-        <Textbox />
+        <Game />
       </header>
 
     </div>
