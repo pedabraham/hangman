@@ -102,3 +102,18 @@ margin: auto;
   border-color: #61dafb;
   background-color: inherit;
 }
+
+.New_game{
+  margin:15px;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: inherit;
+  background-color: #61dafb;
+  color:#282c34;
+  border-style: none;
+}
+
+.GameOver{
+  font-family: serif;
+  font-size:80px;
+}
