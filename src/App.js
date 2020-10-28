@@ -223,11 +223,16 @@ class Game extends React.Component{
   }
 
   render(){
+    let bottom = <Textbox check_letter={this.handle_input}/>;
+    if (this.strike_total<= this.state.strike_record) {
+      bottom = <GameOver New_game={this.New_game}/>
+    }
+
     return (
       <>
       <Strikes record={this.strike_array()}/>
       <Word word={this.state.word.array} />
-      <Textbox check_letter={this.handle_input}/>
+      {bottom}
       </>
     )
   }
