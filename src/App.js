@@ -123,18 +123,19 @@ class Textbox extends React.Component{
   }
 }
 
-function GameOver(props){
+function NewGame(props){
   return (
     <>
       <div className="GameOver">
-        Fin del juego
+        {props.message}
       </div>
       <button className="New_game" onClick={props.New_game}>
-        Nuevo juego
+        New game
       </button>
     </>
   )
 }
+
 class Game extends React.Component{
   /*
     components
