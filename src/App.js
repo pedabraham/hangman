@@ -108,6 +108,8 @@ class Textbox extends React.Component{
     <div>
       <form onSubmit={this.handleSubmit}>
         <input
+          autoComplete="off"
+          autoFocus
           className="char textbox"
           id="new-char"
           onChange={this.handleChange}
