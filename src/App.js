@@ -150,6 +150,7 @@ class Game extends React.Component{
     this.state = {
       strike_record : 0,
       word : initWord,
+      rigth_letters: 0,
     }
     this.handle_input = this.handle_input.bind(this)
     this.New_game = this.New_game.bind(this)
@@ -203,11 +204,19 @@ class Game extends React.Component{
     const word = this.state.word.position
     let arrayW = this.state.word.array
     const strike_record = this.state.strike_record + 1
+    let sum_to_rigth_letters = 0
     if (word.hasOwnProperty(text)) {
       for (var i = 0; i < word[text].length; i++) {
+        if (arrayW[word[text][i]]!=text) {
+          sum_to_rigth_letters++
+        }
         arrayW[word[text][i]]=text
       }
-      this.setState({word: {position:word,array:arrayW}})
+      const rigth_letters = this.state.rigth_letters + sum_to_rigth_letters
+      this.setState({
+        word: {position:word,array:arrayW},
+        rigth_letters: rigth_letters
+      })
     }
     else{
       this.setState({strike_record:strike_record})
@@ -221,15 +230,21 @@ class Game extends React.Component{
     const new_word = this.init_game();
     this.setState({
       word : new_word,
-      strike_record: 0
+      strike_record: 0,
+      rigth_letters: 0
     })
   }
 
   render(){
     let bottom = <Textbox check_letter={this.handle_input}/>;
     if (this.strike_total<= this.state.strike_record) {
-      bottom = <GameOver New_game={this.New_game}/>
+      bottom = <NewGame message="Game Over" New_game={this.New_game}/>
     }
+    let arrayWlen = this.state.word.array.length
+    if (arrayWlen <= this.state.rigth_letters){
+      bottom = <NewGame message="You Win" New_game={this.New_game}/>
+    }
+
 
     return (
       <>
