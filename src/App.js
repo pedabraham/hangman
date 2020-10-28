@@ -97,7 +97,9 @@ class Textbox extends React.Component{
   handleSubmit(event){
     event.preventDefault();
     const text = this.state.text;
-    this.props.check_letter(text)
+    if (text != '' && text != ' '){
+      this.props.check_letter(text)
+    }
     this.setState({submitedText:text, text:''})
   }
 
