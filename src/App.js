@@ -127,7 +127,7 @@ function GameOver(props){
       <div className="GameOver">
         Fin del juego
       </div>
-      <button className="New_game">
+      <button className="New_game" onClick={props.New_game}>
         Nuevo juego
       </button>
     </>
@@ -149,6 +149,7 @@ class Game extends React.Component{
       word : initWord,
     }
     this.handle_input = this.handle_input.bind(this)
+    this.New_game = this.New_game.bind(this)
   }
 
   //get word to start game
@@ -213,6 +214,12 @@ class Game extends React.Component{
   //update the word and the strike board
   update_game(){
 
+  New_game(){
+    const new_word = this.init_game();
+    this.setState({
+      word : new_word,
+      strike_record: 0
+    })
   }
 
   render(){
