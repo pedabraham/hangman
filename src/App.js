@@ -160,7 +160,7 @@ class Game extends React.Component{
   //get word to start game
   init_game(){
     //inizilizar palabra ubicar pocisiones de la letra en la palabra y
-    const random_number = Math.round(Math.random()*dictionary.length)
+    const random_number = Math.round(Math.random()*(dictionary.length-1))
     const word_object = this.word_positions(dictionary[random_number])
     return word_object;
     //inizialiar array de la palbra, con una corecta longitud de espacios vacios
