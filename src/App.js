@@ -130,7 +130,7 @@ function NewGame(props){
       <div className="GameOver">
         {props.message}
       </div>
-      <button className="New_game" onClick={props.New_game}>
+      <button autoFocus="on" className="New_game" onClick={props.New_game}>
         New game
       </button>
     </>
