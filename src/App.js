@@ -1,6 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import {dictionary} from './words.js'
 
 function Letter(props){
   /*props
@@ -159,8 +160,8 @@ class Game extends React.Component{
   //get word to start game
   init_game(){
     //inizilizar palabra ubicar pocisiones de la letra en la palabra y
-    const word = 'palabra'
-    const word_object = this.word_positions(word)
+    const random_number = Math.round(Math.random()*dictionary.length)
+    const word_object = this.word_positions(dictionary[random_number])
     return word_object;
     //inizialiar array de la palbra, con una corecta longitud de espacios vacios
   }
