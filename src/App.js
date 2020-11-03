@@ -224,9 +224,6 @@ class Game extends React.Component{
     }
   }
 
-  //update the word and the strike board
-  update_game(){
-
   New_game(){
     const new_word = this.init_game();
     this.setState({
