@@ -116,7 +116,7 @@ class Textbox extends React.Component{
           onChange={this.handleChange}
           value={this.state.text}
         />
-        <button>
+        <button className="Verify">
           Verify
         </button>
       </form>

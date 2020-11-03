@@ -117,3 +117,14 @@ margin: auto;
   font-family: serif;
   font-size:80px;
 }
+
+.Verify{
+  background-color: #61dafb;
+  color:#282c34;
+  border-style: none;
+  border-radius: 10px;
+  font-size: inherit;
+  margin: 10px;
+  width: 119px;
+
+}
