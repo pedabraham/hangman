@@ -147,12 +147,13 @@ class Game extends React.Component{
   constructor(props) {
     super(props);
     this.strike_total = 4
-    const initWord = this.init_game()
+    const initWord = this.word_positions(dictionary[0])
     this.state = {
       strike_record : 0,
       word : initWord,
       rigth_letters: 0,
     }
+    this.init_game();
     this.handle_input = this.handle_input.bind(this)
     this.New_game = this.New_game.bind(this)
   }
@@ -161,8 +162,16 @@ class Game extends React.Component{
   init_game(){
     //inizilizar palabra ubicar pocisiones de la letra en la palabra y
     const random_number = Math.round(Math.random()*(dictionary.length-1))
-    const word_object = this.word_positions(dictionary[random_number])
-    return word_object;
+
+    let myRequest = new Request('http://127.0.0.1:5000/')
+    fetch(myRequest)
+      .then(response => response.json())
+      .then(data => {
+        console.log(data.word);
+        const word_object = this.word_positions(data.word)
+        //console.log(word_object);
+        this.setState({word:word_object})
+      })
     //inizialiar array de la palbra, con una corecta longitud de espacios vacios
   }
 
@@ -227,7 +236,6 @@ class Game extends React.Component{
   New_game(){
     const new_word = this.init_game();
     this.setState({
-      word : new_word,
       strike_record: 0,
       rigth_letters: 0
     })
