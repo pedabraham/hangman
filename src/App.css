@@ -3,8 +3,9 @@
 }
 
 .App-logo {
-  height: 40vmin;
+  height: 30vmin;
   pointer-events: none;
+  font-size:30vmin;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -111,6 +112,11 @@ margin: auto;
   background-color: #61dafb;
   color:#282c34;
   border-style: none;
+}
+
+.title{
+  font-family: serif;
+  font-size:150px;
 }
 
 .GameOver{
