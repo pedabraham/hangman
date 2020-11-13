@@ -98,7 +98,7 @@ class Textbox extends React.Component{
   handleSubmit(event){
     event.preventDefault();
     const text = this.state.text.toLowerCase();
-    if (text != '' && text != ' '){
+    if (text !== '' && text !== ' '){
       this.props.check_letter(text)
     }
     this.setState({submitedText:text, text:''})
@@ -217,7 +217,7 @@ class Game extends React.Component{
     let sum_to_rigth_letters = 0
     if (word.hasOwnProperty(text)) {
       for (var i = 0; i < word[text].length; i++) {
-        if (arrayW[word[text][i]]!=text) {
+        if (arrayW[word[text][i]] !== text) {
           sum_to_rigth_letters++
         }
         arrayW[word[text][i]]=text
