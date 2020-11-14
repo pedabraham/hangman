@@ -163,7 +163,7 @@ class Game extends React.Component{
     //inizilizar palabra ubicar pocisiones de la letra en la palabra y
     //const random_number = Math.round(Math.random()*(dictionary.length-1))
 
-    let myRequest = new Request('http://127.0.0.1:5000/')
+    let myRequest = new Request('https://guarded-beyond-85157.herokuapp.com')
     fetch(myRequest)
       .then(response => response.json())
       .then(data => {
