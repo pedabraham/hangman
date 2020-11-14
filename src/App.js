@@ -146,7 +146,7 @@ class Game extends React.Component{
   */
   constructor(props) {
     super(props);
-    this.strike_total = 6
+    this.strike_total = 8
     const initWord = this.word_positions(dictionary[0])
     this.state = {
       strike_record : 0,
