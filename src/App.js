@@ -146,10 +146,10 @@ class Game extends React.Component{
   */
   constructor(props) {
     super(props);
-    this.strike_total = 8
-    const initWord = this.word_positions(dictionary[0])
+    this.strike_max = 8
+    const initWord = this.get_word_data(dictionary[0])
     this.state = {
-      strike_record : 0,
+      strike_count : 0,
       word : initWord,
       rigth_letters: 0,
     }
@@ -168,7 +168,7 @@ class Game extends React.Component{
       .then(response => response.json())
       .then(data => {
         //console.log(data.word);
-        const word_object = this.word_positions(data.word)
+        const word_object = this.get_word_data(data.word)
         //console.log(word_object);
         this.setState({word:word_object})
       })
@@ -179,13 +179,13 @@ class Game extends React.Component{
       })*/
     //console.log(dato);
 
-    //const word_object = this.word_positions(dictionary[random_number])
+    //const word_object = this.get_get_word_data(dictionary[random_number])
     //return word_object;
     //inizialiar array de la palbra, con una corecta longitud de espacios vacios
   }
 
   //
-  word_positions(word){
+  get_word_data(word){
     //iterate over string
     let position = {}
     let array = []
@@ -197,8 +197,8 @@ class Game extends React.Component{
       array.push('');
     }
     return ({
-      position: position,
-      array: array
+      letter_positions: position,
+      guessed_letters: array
     })
   }
 
@@ -206,9 +206,9 @@ class Game extends React.Component{
   strike_array(){
     let array  = []
     // remaining opportinutys in the game
-    const ops = this.strike_total - this.state.strike_record
-    for (let i = 0; i < this.strike_total; i++) {
-      if (i<ops){
+    const remainingStrikes = this.strike_max - this.state.strike_count
+    for (let i = 0; i < this.strike_max; i++) {
+      if (i < remainingStrikes){
         array.push(true)
       }
       else {
@@ -220,42 +220,44 @@ class Game extends React.Component{
 
   //updates the state of letter
   handle_input(text){
-    const word = this.state.word.position
-    let arrayW = this.state.word.array
-    const strike_record = this.state.strike_record + 1
+    const letter_positions = this.state.word.letter_positions
+    let guessed_letters = this.state.word.guessed_letters
+    const strike_count = this.state.strike_count + 1
     let sum_to_rigth_letters = 0
-    if (word.hasOwnProperty(text)) {
-      for (var i = 0; i < word[text].length; i++) {
-        if (arrayW[word[text][i]] !== text) {
+    if (letter_positions.hasOwnProperty(text)) {
+      for (var i = 0; i < letter_positions[text].length; i++) {
+        const isFirstTimeOfLetter = guessed_letters[letter_positions[text][i]] !== text
+        //the comparation adds the rigths leters to the sum only once
+        if (isFirstTimeOfLetter) {
           sum_to_rigth_letters++
         }
-        arrayW[word[text][i]]=text
+        guessed_letters[letter_positions[text][i]]=text
       }
       const rigth_letters = this.state.rigth_letters + sum_to_rigth_letters
       this.setState({
-        word: {position:word,array:arrayW},
+        word: {letter_positions:letter_positions,guessed_letters:guessed_letters},
         rigth_letters: rigth_letters
       })
     }
     else{
-      this.setState({strike_record:strike_record})
+      this.setState({strike_count:strike_count})
     }
   }
 
   New_game(){
     this.init_game();
     this.setState({
-      strike_record: 0,
+      strike_count: 0,
       rigth_letters: 0
     })
   }
 
   render(){
     let bottom = <Textbox check_letter={this.handle_input}/>;
-    if (this.strike_total<= this.state.strike_record) {
+    if (this.strike_max<= this.state.strike_count) {
       bottom = <NewGame message="Game Over" New_game={this.New_game}/>
     }
-    let arrayWlen = this.state.word.array.length
+    let arrayWlen = this.state.word.guessed_letters.length
     if (arrayWlen <= this.state.rigth_letters){
       bottom = <NewGame message="You Win" New_game={this.New_game}/>
     }
@@ -264,7 +266,7 @@ class Game extends React.Component{
     return (
       <>
       <Strikes record={this.strike_array()}/>
-      <Word word={this.state.word.array} />
+      <Word word={this.state.word.guessed_letters} />
       {bottom}
       </>
     )
