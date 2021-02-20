@@ -270,9 +270,9 @@ class Game extends React.Component{
 
     return (
       <>
-      <Strikes record={this.strike_array()}/>
-      <Word word={this.state.word.guessed_letters} />
-      {bottom}
+        <Strikes record={this.strike_array()}/>
+        <Word word={this.state.word.guessed_letters} />
+        {bottom}
       </>
     )
   }
@@ -284,21 +284,8 @@ function App() {
     <div className="App">
       <header className="App-header">
       <div className="title">Guess the word</div>
-        {/*<img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>*/}
-        <Game />
+      <Game />
       </header>
-
     </div>
   );
 }
