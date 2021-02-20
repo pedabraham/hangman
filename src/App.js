@@ -225,22 +225,32 @@ class Game extends React.Component{
     const strike_count = this.state.strike_count + 1
     let sum_to_rigth_letters = 0
     if (letter_positions.hasOwnProperty(text)) {
-      for (var i = 0; i < letter_positions[text].length; i++) {
-        const isFirstTimeOfLetter = guessed_letters[letter_positions[text][i]] !== text
-        //the comparation adds the rigths leters to the sum only once
-        if (isFirstTimeOfLetter) {
-          sum_to_rigth_letters++
-        }
-        guessed_letters[letter_positions[text][i]]=text
+      const wasLetterGuessed = guessed_letters.indexOf(text) !== -1
+      if (!wasLetterGuessed){
+        sum_to_rigth_letters = letter_positions[text].length
+        const rigth_letters = this.state.rigth_letters + sum_to_rigth_letters
+        this.add_letter_to_word(text)
+        this.setState({
+          rigth_letters: rigth_letters
+        })
       }
-      const rigth_letters = this.state.rigth_letters + sum_to_rigth_letters
-      this.setState({
-        word: {letter_positions:letter_positions,guessed_letters:guessed_letters},
-        rigth_letters: rigth_letters
-      })
     }
     else{
       this.setState({strike_count:strike_count})
+    }
+  }
+
+  add_letter_to_word(letter){
+    const letter_positions = this.state.word.letter_positions
+    const guessed_letters = this.state.word.guessed_letters
+    const wasLetterGuessed = guessed_letters.indexOf(letter) !== -1
+    if (!wasLetterGuessed){
+      for(const position of letter_positions[letter]){
+        guessed_letters[position] = letter
+      }
+      this.setState({
+        word: {letter_positions:letter_positions, guessed_letters:guessed_letters}
+      })
     }
   }
 
