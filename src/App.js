@@ -153,35 +153,25 @@ class Game extends React.Component{
       word : initWord,
       rigth_letters: 0,
     }
-    this.init_game();
     this.handle_input = this.handle_input.bind(this)
     this.New_game = this.New_game.bind(this)
   }
 
   //get word to start game
-  init_game(){
+  fetch_word(){
     //inizilizar palabra ubicar pocisiones de la letra en la palabra y
-    //const random_number = Math.round(Math.random()*(dictionary.length-1))
-
-    let myRequest = new Request('https://guarded-beyond-85157.herokuapp.com')
-    fetch(myRequest)
+    //inizialiar array de la palbra, con una corecta longitud de espacios vacios
+    fetch('https://guarded-beyond-85157.herokuapp.com')
       .then(response => response.json())
       .then(data => {
-        //console.log(data.word);
         const word_object = this.get_word_data(data.word)
-        //console.log(word_object);
         this.setState({word:word_object})
       })
-      /*.then(data => {
-        console.log('hello');
-        console.log(data)
-        dato = data;
-      })*/
-    //console.log(dato);
-
-    //const word_object = this.get_get_word_data(dictionary[random_number])
-    //return word_object;
-    //inizialiar array de la palbra, con una corecta longitud de espacios vacios
+      .catch((error) => {
+        const random_number = Math.round(Math.random()*(dictionary.length-1))
+        const word_object = this.get_get_word_data(dictionary[0])
+        this.setState({word:word_object})}
+      )
   }
 
   //
@@ -255,7 +245,7 @@ class Game extends React.Component{
   }
 
   New_game(){
-    this.init_game();
+    this.fetch_word();
     this.setState({
       strike_count: 0,
       rigth_letters: 0
