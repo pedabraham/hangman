@@ -266,6 +266,10 @@ class Game extends React.Component{
     let bottom = <Textbox check_letter={this.handle_input}/>;
     if (this.strike_max<= this.state.strike_count) {
       bottom = <NewGame message="Game Over" New_game={this.New_game}/>
+      const letter_positions = this.state.word.letter_positions
+      for(const letter in letter_positions){
+        this.add_letter_to_word(letter)
+      }
     }
     let arrayWlen = this.state.word.guessed_letters.length
     if (arrayWlen <= this.state.rigth_letters){
