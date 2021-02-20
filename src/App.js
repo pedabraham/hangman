@@ -147,7 +147,8 @@ class Game extends React.Component{
   constructor(props) {
     super(props);
     this.strike_max = 8
-    const initWord = this.get_word_data(dictionary[0])
+    const random_number = Math.round(Math.random()*(dictionary.length-1))
+    const initWord = this.get_word_data(dictionary[random_number])
     this.state = {
       strike_count : 0,
       word : initWord,
