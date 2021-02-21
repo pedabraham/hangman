@@ -147,15 +147,22 @@ class Game extends React.Component{
   constructor(props) {
     super(props);
     this.strike_max = 8
-    const random_number = Math.round(Math.random()*(dictionary.length-1))
+    const random_number = Math.round(Math.random()*(dictionary.length - 2))
     const initWord = this.get_word_data(dictionary[random_number])
+    const initNextWord = this.get_word_data(dictionary[random_number + 1])
     this.state = {
       strike_count : 0,
       word : initWord,
       rigth_letters: 0,
+      next_word: initNextWord
     }
     this.handle_input = this.handle_input.bind(this)
     this.New_game = this.New_game.bind(this)
+    this.fetch_word = this.fetch_word.bind(this)
+  }
+
+  componentDidMount(){
+    this.fetch_word()
   }
 
   //get word to start game
@@ -166,12 +173,12 @@ class Game extends React.Component{
       .then(response => response.json())
       .then(data => {
         const word_object = this.get_word_data(data.word)
-        this.setState({word:word_object})
+        this.setState({next_word:word_object})
       })
       .catch((error) => {
         const random_number = Math.round(Math.random()*(dictionary.length-1))
-        const word_object = this.get_get_word_data(dictionary[0])
-        this.setState({word:word_object})}
+        const word_object = this.get_word_data(dictionary[random_number])
+        this.setState({next_word:word_object})}
       )
   }
 
@@ -247,10 +254,11 @@ class Game extends React.Component{
 
   New_game(){
     this.fetch_word();
-    this.setState({
+    this.setState((prev_state) => ({
       strike_count: 0,
-      rigth_letters: 0
-    })
+      rigth_letters: 0,
+      word: prev_state.next_word
+    }))
   }
 
   render(){
