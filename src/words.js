@@ -4,7 +4,11 @@ const dictionary = [
   'hyms',
   'letter',
   'every',
-  'day'
+  'day',
+  'unbearably',
+  'buff',
+  'year',
+  'sunfloweer',
 ]
 
 export {dictionary}
